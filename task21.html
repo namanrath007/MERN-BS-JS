@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task21</title>
+</head>
+<body>
+    <style>
+        .container{
+            margin: 40px 0px 0px 500px;
+            width: 400px;
+            border: 2px solid black;
+            padding: 0px 0px 0px 10px;
+        }
+        #num1{
+            margin: 10px 0px 10px 20px;
+        }
+        #num2{
+            margin: 10px 0px 10px 15px;
+        }
+    </style>
+    <div class="container">
+        1st Number<input type="text" id="num1"><br>
+        2nd Number<input type="text" id="num2"><br>
+        <button onclick="multiply()">Multiply</button>
+        <button onclick="divide()">Divide</button><br>
+        
+        <p id="f"></p>
+    </div>
+
+    <script>
+
+        function multiply(){
+            var num1 = Number(document.getElementById('num1').value);
+            var num2 = Number(document.getElementById('num2').value);
+            var mul = num1 * num2;
+            var result = document.getElementById('f');
+            result.innerText = 'The result is: '+ mul;
+        }
+
+        function divide(){
+            var num1 = Number(document.getElementById('num1').value);
+            var num2 = Number(document.getElementById('num2').value);
+            var div = num1 / num2;
+            var result = document.getElementById('f');
+            result.innerText = 'The result is: '+ div;
+        }
+
+    </script>
+    
+</body>
+</html>

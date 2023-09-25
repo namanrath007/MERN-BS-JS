@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Task26</title>
+   </head>
+   <body>
+
+    <style>
+
+        .container{
+            background-image: linear-gradient( rgb(238, 238, 164),rgb(245, 94, 215), rgb(249, 51, 189));
+            border: 1px solid black;
+            margin: 0px 0px 0px 460px;
+            padding: 0px 20px 20px 30px;
+            width: 590px
+            
+        }
+        #reg{
+            color: blue;
+            text-align: center;
+        }
+        #fname{
+            margin: 10px 0px 15px 72px;
+            padding: 0px 155px 0px 5px;
+        }
+        #lname{
+            margin: 0px 0px 15px 74px;
+            padding: 0px 155px 0px 5px;
+        }
+        #mail{
+            margin: 0px 0px 15px 102px;
+            padding: 0px 155px 0px 5px;
+        }
+        #password{
+            margin: 0px 0px 15px 79px;
+            padding: 0px 155px 0px 5px;
+        }
+        #repassword{
+            margin: 0px 0px 15px 20px;
+            padding: 0px 155px 0px 5px;
+        }
+        #male{
+            margin: 0px 4px 15px 90px;
+        }
+        #female{
+            margin: 0px 4px 15px 141px;
+        }
+
+        #age{
+            margin: 0px 0px 15px 112px;
+            padding: 0px 155px 0px 5px;
+        }
+        #phone{
+            margin: 0px 0px 15px 46px;
+            padding: 0px 155px 0px 5px;
+        }
+        #add{
+            margin: 0px 0px 0px 86px;
+            padding: 0px 47px 0px 5px;
+        }
+
+        #state{
+            margin: 15px 0px 15px 111px;
+            padding: 0px 155px 0px 5px;
+        }
+        #country{
+            margin: 0px 0px 15px 87px;
+            padding: 0px 45px 0px 5px; 
+        }
+        #english{
+            margin-left: 18px;
+        }
+        #here{
+            margin: 15px 5px 15px 0px;
+            padding: 0px 25px 0px 25px;
+        }
+        #log{
+            margin: 5px 0px 0px 300px;
+        }
+        #sub{
+            background-color: orangered;
+            color: white;
+            border: 1px solid black;
+            border-radius: 9px;
+            font-size: 14px;
+            padding: 4px 25px 5px 25px;
+            margin: 10px 0px 0px 250px;
+        }
+
+    </style>
+
+      <div class="container">
+        <h1 id="reg">Registration Form</h1>
+      <form>
+      Full Name
+      <input onblur="myBlur()" onfocus="myFocus()" onkeyup="myFirstname()" id="fname" type="text">
+      <span id="field">Poor</span>
+    <br>
+
+      Last name
+      <input onblur="myBlur1()" onfocus="myFocus1()" onkeyup="myLastname()" id="lname" type="text">
+      <span id="field1">Poor</span>
+    <br>
+
+      Email
+      <input onblur="myBlur2()" onfocus="myFocus2()" onkeyup="myEmail()" id="mail" type="email">
+      <span id="field2">Poor</span>
+    <br>
+
+      Password
+      <input onblur="myBlur3()" onfocus="myFocus3()" onkeyup="myPass()" type="password" id="password">
+      <span id="field3">Poor</span>
+    <br>
+
+      Re-enter Password
+      <input onblur="myBlur4()" onfocus="myFocus4()" onkeyup="myRepass()" type="password" id="repassword">
+      <span id="field4">Poor or Mismatch</span>
+    <br>
+
+      Gender:<input type="radio" name="gender" id="male" >Male <br>
+      <input type="radio" name="gender" id="female" >Female <br>
+
+      Age:<input onblur="myBlur5()" onfocus="myFocus5()" onkeyup="myAge()" type="phonenumber" id="age">
+      <span id="field5">Poor</span>
+    <br>
+
+      Phone Number<input onblur="myBlur6()" onfocus="myFocus6()" onkeyup="myPhone()" type="phonenumber" id="phone">
+      <span id="field6">Poor</span>
+    <br>
+
+      Address
+      <textarea onblur="myBlur7()" onfocus="myFocus7()" onkeyup="myText()" name="address" id="add" cols="37" rows="5"></textarea>
+      <span id="field7">Poor</span>
+    <br>
+
+      State<input onblur="myBlur8()" onfocus="myFocus8()" onkeyup="myState()" type="text" id="state">
+      <span id="field8">Poor</span>
+    <br>
+
+      Country
+      <select name="country" id="country">
+         <option value="select">Choose your country</option>
+         <option value="India">India</option>
+      </select> <br>
+
+      Languages known:
+      <input type="checkbox" id="english" value="English">English
+      <input type="checkbox" id="kannada" value="Kannada">Kannada
+      <input type="checkbox" id="hindi" value="Hindi">Hindi
+      <input type="checkbox" id="telugu" value="Telugu">Telugu <br>
+
+      <input type="checkbox" id="here" value="here">Hereby I declare all the given details are true <br>
+
+      <p id="log">Log in to <a href="https://ethnus.com/" id="ethnus">Ethnus</a>  Website </p>
+
+      <br>
+      <input onclick="subValidate()" type="button" id="sub" value="Register">
+    
+    </form>
+    </div>
+    <script>
+        function myFocus()
+        {
+            document.getElementById('field').style.color = "red";
+            
+        }
+        function myBlur()
+        {
+            document.getElementById('fname').style.borderColor="black";
+            
+        }
+        
+        function myFirstname(){
+            var fname = document.getElementById("fname").value;
+            var spacepos = fname.indexOf(" ");
+            if (fname.length == 0 || (1 <= spacepos && fname.length >= spacepos+2)){
+                document.getElementById("field").innerHTML = "Poor";
+                document.getElementById('field').style.color = "red";
+            }
+            /*else if (fname.length < 5){
+                document.getElementById("field").innerHTML = "Poor";
+                document.getElementById('field').style.color = "red";
+            }
+            else if (fname.length < 10 && fname.length >= 5){
+                document.getElementById("field").innerHTML = "Good";
+                document.getElementById('field').style.color = "blue";
+            }*/
+            else{
+                document.getElementById("field").innerHTML = "Good";
+                document.getElementById('field').style.color = "green";
+            }
+        }
+
+
+        function myFocus1()
+        {
+            document.getElementById('field1').style.color = "red";
+            
+        }
+        function myBlur1()
+        {
+            document.getElementById('lname').style.borderColor="black";
+            
+        }
+        
+
+
+        function myLastname(){
+            var lname = document.getElementById("lname").value;
+            var spacepos = lname.indexOf(" ");
+            if (lname.length == 0 || (1 <= spacepos && lname.length >= spacepos+2)){
+                document.getElementById("field1").innerHTML = "Poor";
+                document.getElementById('field1').style.color = "red";
+            }
+            /*else if (fname.length < 5){
+                document.getElementById("field").innerHTML = "Poor";
+                document.getElementById('field').style.color = "red";
+            }
+            else if (fname.length < 10 && fname.length >= 5){
+                document.getElementById("field").innerHTML = "Good";
+                document.getElementById('field').style.color = "blue";
+            }*/
+            else{
+                document.getElementById("field1").innerHTML = "Good";
+                document.getElementById('field1').style.color = "green";
+            }
+        }
+
+        function myFocus2()
+        {
+            document.getElementById('field2').style.color = "red";
+            
+        }
+        function myBlur2()
+        {
+            document.getElementById('mail').style.borderColor="black";
+            
+        }
+
+        function myEmail(){
+            var mail = document.getElementById("mail").value;
+            var atpos=mail.indexOf("@");
+            var dotpos=mail.lastIndexOf(".");
+            if (atpos<1 || atpos+2>dotpos || dotpos+2>=mail.length){
+                document.getElementById("field2").innerHTML = "Poor";
+                document.getElementById('field2').style.color = "red";
+            }
+            else if(atpos>=1 && atpos+2<=dotpos && dotpos+2<mail.length){
+                document.getElementById("field2").innerHTML = "Good";
+                document.getElementById('field2').style.color = "green";
+            }
+        }
+
+
+        function myFocus3()
+        {
+            document.getElementById('field3').style.color = "red";
+            
+        }
+        function myBlur3()
+        {
+            document.getElementById('password').style.borderColor="black";
+            
+        }
+
+        
+        function myPass() {
+            var password = document.getElementById("password").value;
+            var passwordStrength = document.getElementById("field3");
+        
+            var lengthRegex = /.{8,}/;
+            var uppercaseRegex = /[A-Z]/;
+            var lowercaseRegex = /[a-z]/;
+            var numberRegex = /[0-9]/;
+            var specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+        
+            // Check if the password meets the criteria
+            var isLengthValid = lengthRegex.test(password);
+            var isUppercaseValid = uppercaseRegex.test(password);
+            var isLowercaseValid = lowercaseRegex.test(password);
+            var isNumberValid = numberRegex.test(password);
+            var isSpecialCharValid = specialCharRegex.test(password);
+        
+            var passwordIsValid = isLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharValid;
+        
+            if (passwordIsValid) {
+                passwordStrength.innerHTML = 'Good';
+                passwordStrength.style.color = 'green';
+            } else {
+                passwordStrength.innerHTML = 'Poor';
+                passwordStrength.style.color = 'red';
+            }
+        }
+
+            
+        
+        
+        function myFocus4()
+        {
+            document.getElementById('field4').style.color = "red";
+            
+        }
+        function myBlur4()
+        {
+            document.getElementById('repassword').style.borderColor="black";
+            
+        }
+
+
+        function myRepass(){
+            var pass = document.getElementById("password").value;
+            var repass = document.getElementById("repassword").value;
+            if(pass==repass){
+                document.getElementById("field4").innerHTML = "Good";
+                document.getElementById('field4').style.color = "green";
+            }
+            else{
+                document.getElementById("field4").innerHTML = "Poor or Mismatch";
+                document.getElementById('field4').style.color = "red";
+            }
+        }
+
+        function myFocus5()
+        {
+            document.getElementById('field5').style.color = "red";
+            
+        }
+        function myBlur5()
+        {
+            document.getElementById('age').style.borderColor="black";
+            
+        }
+
+
+        function myAge(){
+            var age = document.getElementById("age").value;
+            if(age==null || age=='' || isNaN(age)){
+                document.getElementById("field5").innerHTML = "Poor";
+                document.getElementById('field5').style.color = "red";
+                
+            }
+            else{
+                document.getElementById("field5").innerHTML = "Good";
+                document.getElementById('field5').style.color = "green";
+            }
+        }
+
+        function myFocus6()
+        {
+            document.getElementById('field6').style.color = "red";
+            
+        }
+        function myBlur6()
+        {
+            document.getElementById('phone').style.borderColor="black";
+            
+        }
+
+        function myPhone(){
+            var phone = document.getElementById("phone").value;
+            if(phone==null || phone=='' || isNaN(phone)){
+                document.getElementById("field6").innerHTML = "Poor";
+                document.getElementById('field6').style.color = "red";
+                
+            }
+            else{
+                document.getElementById("field6").innerHTML = "Good";
+                document.getElementById('field6').style.color = "green";
+            }
+        }
+
+        function myFocus7()
+        {
+            document.getElementById('field7').style.color = "red";
+            
+        }
+        function myBlur7()
+        {
+            document.getElementById('add').style.borderColor="black";
+            
+        }
+
+        function myText(){
+            var add = document.getElementById("add").value;
+            if (add.length == 0){
+                document.getElementById("field7").innerHTML = "Poor";
+                document.getElementById('field7').style.color = "red";
+            }
+            /*else if (add.length < 20){
+                document.getElementById("field7").innerHTML = "Poor";
+                document.getElementById('field7').style.color = "red";
+            }
+            else if (add.length >= 25 && add.length <= 40){
+                document.getElementById("field7").innerHTML = "Good";
+                document.getElementById('field7').style.color = "blue";
+            }*/
+            else{
+                document.getElementById("field7").innerHTML = "Ok";
+                document.getElementById('field7').style.color = "green";
+            }
+        }
+
+
+        function myFocus8()
+        {
+            document.getElementById('field8').style.color = "red";
+            
+        }
+        function myBlur8()
+        {
+            document.getElementById('state').style.borderColor="black";
+            
+        }
+
+        function myState(){
+            var state = document.getElementById("state").value;
+            if (state.length == 0){
+                document.getElementById("field8").innerHTML = "Poor";
+                document.getElementById('field8').style.color = "red";
+            }
+            /*else if (state.length < 20){
+                document.getElementById("field8").innerHTML = "Poor";
+                document.getElementById('field8').style.color = "red";
+            }
+            else if (state.length >= 25 && state.length <= 40){
+                document.getElementById("field8").innerHTML = "Good";
+                document.getElementById('field8').style.color = "blue";
+            }*/
+            else{
+                document.getElementById("field8").innerHTML = "Ok";
+                document.getElementById('field8').style.color = "green";
+            }
+        }
+
+        function subValidate(){
+            var doc1 = document.getElementById("field").innerHTML;
+            var doc2 = document.getElementById("field2").innerHTML;
+            var doc3 = document.getElementById("field2").innerHTML;
+            var doc4 = document.getElementById("field3").innerHTML;
+            var doc5 = document.getElementById("field4").innerHTML;
+            var doc6 = document.getElementById("field5").innerHTML;
+            var doc7 = document.getElementById("field6").innerHTML;
+            var doc8 = document.getElementById("field7").innerHTML;
+            var doc9 = document.getElementById("field8").innerHTML;
+
+            // radio button
+
+            var male = document.getElementById("male");
+            var female = document.getElementById("female");
+
+            //checkbox
+
+            var eng = document.getElementById("english");
+            var kan = document.getElementById("kannada");
+            var hin = document.getElementById("hindi");
+            var tel = document.getElementById("telugu");
+            var here = document.getElementById("here");
+
+
+            if(doc1 == "Poor" || doc2 == "Poor" || doc3 == "Poor" || doc4 == "Poor" || doc5 == "Poor or Mismatch" || doc6 == "Poor" || doc7 == "Poor" || doc8 == "Poor" || doc9 == "Poor"){
+                alert("Your form has not been submited");
+            }
+            else if((doc1 != "Poor" && doc2 != "Poor" && doc3 != "Poor" && doc4 != "Poor" && doc5 != "Poor or Mismatch" && doc6 != "Poor" && doc7 != "Poor" && doc8 != "Poor" && doc9 != "Poor") && (male.checked || female.checked) && (eng.checked || kan.checked || hin.checked || tel.checked) && (here.checked)){
+                alert("Your form has been submited successfully");
+            }
+            else{
+                alert("Your form has not been submited");
+            }
+        }
+
+    </script>
+
+
+   </body>
+</html>

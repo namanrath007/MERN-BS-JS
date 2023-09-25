@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task20</title>
+  </head>
+  <body style="background-color: rgb(114, 206, 183)" onload="alpha();">
+    <script>
+      function alpha() {
+        var word = prompt("Enter a word to be sorted alphabetically:");
+
+        if (word === null || word === "") {
+          console.log("Invalid input. Please enter a word.");
+        } else {
+          var characters = word.split("");
+
+          var sorted = false;
+          while (!sorted) {
+            sorted = true;
+            for (var i = 0; i < characters.length - 1; i++) {
+              if (characters[i] > characters[i + 1]) {
+                var temp = characters[i];
+                characters[i] = characters[i + 1];
+                characters[i + 1] = temp;
+                sorted = false;
+              }
+            }
+          }
+
+          var sortedWord = characters.join("");
+
+          document.write("Original Word: ", word);
+          document.write(" <br> Sorted Word: ", sortedWord);
+        }
+      }
+    </script>
+  </body>
+</html>

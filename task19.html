@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task19</title>
+</head>
+<body style="background-color: rgb(114, 206, 183)" onload="rev_n();">
+    <script>
+        function rev_n(){     
+            var num = prompt("Enter a number to reverse: ", " ");
+            var n = num;
+            var t;
+            var sum = 0;
+            while (n > 0){
+                t = n % 10;
+                n = Math.floor(n / 10);
+                sum = sum * 10 + t;
+            }
+            document.write("The original number is: " + num +
+            " <br> The reversed number is: " + sum);
+        }
+    </script>
+    
+</body>
+</html>

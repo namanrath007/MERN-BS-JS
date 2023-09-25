@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task22</title>
+</head>
+<body>
+    <button onclick="show_date()">show date</button><br>
+    <p id="g"></p><br><br>
+    <button onclick="show_time()">show time</button><br>
+    <p id="h"></p>
+
+    <script>
+        var d= new Date();
+        var Hour = d.getHours();
+        var Min = d.getMinutes();
+        var Sec = d.getSeconds();
+        var Day = d.getDate();
+        var Month = d.toLocaleString('default', { month: 'long' });
+        var Year = d.getFullYear();
+
+        var date1 = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+        var date = Day + "/" + Month + "/" + Year;
+
+         
+        //console.log(d.getTime());
+        //var time = console.log(d.getTime());
+        function show_date(){
+            document.getElementById('g').innerHTML=date;
+        }
+        function show_time(){
+            document.getElementById('h').innerHTML=Date();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .container{
+            margin: 50px 0px 0px 600px;
+        }
+        .contain{
+            border-top: 1px solid rgb(232, 229, 229);
+            border-right: 1px solid rgb(232, 229, 229);
+            border-left: 1px solid rgb(232, 229, 229);
+            border-bottom: 1px solid grey;
+            background-color: rgb(234, 233, 233);
+            box-shadow: 0px 1px grey;
+            width: 275px;
+            padding: 20px 10px 20px 30px;
+        }
+        #inst{
+            font-style: italic;
+            font-family:'Times New Roman', Times, serif;
+            font-size: 28px;
+            margin: 0px 0px 20px 70px;
+        }
+        #t1{
+            border: 1px solid grey;
+            display: flex;
+            flex-direction: row;
+            margin: 0px 15px 0px 0px;
+            
+        }
+        #mail{
+            padding: 0px 60px 0px 10px;
+            border: 1px solid grey;
+        }
+        #fname{
+            padding: 0px 60px 0px 10px;
+            border: 1px solid grey;
+        }
+        #user{
+            padding: 0px 60px 0px 10px;
+            border: 1px solid grey;
+        }
+        #i1{
+            margin: 0px 0px 0px 0px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid grey;
+        }
+        #password{
+            margin: 0px 0px 0px 0px;
+            padding: 0px 60px 0px 10px;
+            border: 1px solid grey;
+        }
+        #log{
+            padding: 5px 111px 5px 111px;
+            margin: 0px 0px 10px 0px;
+            border: 1px solid black;
+            background-color: rgb(0, 64, 255);
+            color: white;
+        }
+        #for{
+            margin: 0px 0px 0px 55px;
+        }
+        #rem{
+            font-size: 14px;
+        }
+        #re{
+            margin: 0px 5px 0px 0px;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(0, 64, 255);
+        }
+        #hav{
+            margin: 10px 0px 0px 70px;
+            font-size: 12px;
+        }
+
+    </style>
+
+    <div class="container">
+        <div class="contain">
+            <div id="inst">
+                Instagram
+            </div>
+            <form>
+                <div id="t1">
+                <img src=".\image\Picture4.png" id="i1" alt="">
+                <input type="email" name="email" placeholder=" Email Id" id="mail">
+                </div>
+                <br>
+                <div id="t1">
+                <img src=".\image\Picture4.png" id="i1" alt="">
+                <input type="text" name="fname" placeholder=" Fullname" id="fname">
+                </div>
+                <br>
+                <div id="t1">
+                <img src=".\image\Picture4.png" id="i1" alt="">
+                <input type="text" name="user" placeholder=" Username" id="user">
+                </div>
+                <br>
+                <div id="t1">
+                <img src=".\image\Picture4.png" id="i1" alt="">
+                <input type="password" placeholder=" Password" id="password">
+                </div>
+                <br>
+                <input type="submit" onclick="subValidate()" name="log" id="log" value="Log in"><br>
+                <div id="rem">
+                <input type="checkbox" name="remember" id="re">Remember me
+                <a href="" id="for">Forgot Password?</a>
+                </div>    
+            </form>
+        </div>
+        <p id="hav">
+            Have an account?
+            <a href="task24.html">Log in here.</a>
+            <script>
+                function subValidate(){
+
+                    var fname = document.getElementById("fname").value;
+                    var mail = document.getElementById("mail").value;
+                    var user = document.getElementById("user").value;
+
+
+                    var spacepos = fname.indexOf(" ");
+                    var atpos = mail.indexOf("@");
+                    var dotpos = mail.lastIndexOf(".");
+
+                    var user = document.getElementById("user").value;
+                    var password = document.getElementById("password").value;
+
+        
+                    var lengthRegex = /.{8,}/;
+                    var uppercaseRegex = /[A-Z]/;
+                    var lowercaseRegex = /[a-z]/;
+                    var numberRegex = /[0-9]/;
+                    var specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+        
+                    var isLengthValid = lengthRegex.test(password);
+                    var isUppercaseValid = uppercaseRegex.test(password);
+                    var isLowercaseValid = lowercaseRegex.test(password);
+                    var isNumberValid = numberRegex.test(password);
+                    var isSpecialCharValid = specialCharRegex.test(password);
+        
+                    var passwordIsValid = isLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharValid;
+        
+                    if(user.length == 0 || password.length == 0 || mail.length == 0 || fname.length == 0 ){
+                        alert("Please Fullfill appropriate details");
+                    }
+
+                    else if((user.length >= 1 && password.length >=1 && mail.length >= 1 && fname.length >= 1) && (1 <= spacepos && fname.length > spacepos+1) && (atpos>=1 && atpos+2<=dotpos && dotpos+2<mail.length) && (passwordIsValid)){
+                        document.write("<h1>Thank you for filling details</h1>");
+                        document.querySelector("h1").style.color="blue";
+                        document.querySelector("h1").style.textAlign="center";
+                        document.querySelector("h1").style.fontSize="70px";
+                        document.querySelector("h1").style.margin="270px 0px 0px 0px";
+                        document.querySelector("h1").style.background="aquamarine";
+                        document.querySelector("body").style.margin="0px 0px 0px 0px";
+                        document.querySelector("body").style.background="indigo";
+                    }
+                    else if(atpos<1 || atpos+2>dotpos || dotpos+2 >= mail.length){
+                        alert("Please Fill the email properly");
+                        document.getElementById("mail").value = '';
+                    }
+                    else if(!passwordIsValid){
+                        alert("Please Fill the password properly");
+                        document.getElementById("password").value = '';
+                    }
+
+                    else if(spacepos <= 0 || (spacepos<1 && spacepos>=fname.length )){
+                        alert("Please Fill the fullname properly");
+                        document.getElementById("fname").value = '';
+                    }
+                    /*else{
+                        alert("Please Fullfill appropriate details");
+                    }*/
+                }
+            </script>
+    
+</body>
+</html>
